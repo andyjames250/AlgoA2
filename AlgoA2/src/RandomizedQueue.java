@@ -41,7 +41,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     
     public Item dequeue() { // delete and return a random item
         if (isEmpty()) throw new NoSuchElementException("Queue underflow");
-        exchange(q, first, first + StdRandom.uniform(N - 1));
+        exchange(q, first, first + StdRandom.uniform(N));
         Item item = q[first];
         q[first] = null;                            // to avoid loitering
         N--;
@@ -54,7 +54,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     
     public Item sample() { // return (but do not delete) a random item
         if (isEmpty()) throw new NoSuchElementException("Queue underflow");
-        return q[StdRandom.uniform(N - 1) + first];        
+        return q[StdRandom.uniform(N) + first];        
     }
     
     public Iterator<Item> iterator() { // return an independent iterator over items in random order
@@ -104,7 +104,44 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     }
     
     public static void main(String[] args) { // unit testing
-        
-        
+        RandomizedQueue<Integer> q = new RandomizedQueue<Integer>();
+        int seqLength = 5;
+        for (int i = 0; i < seqLength; i++) {
+//            q.enqueue(-1*(i+1));
+            q.enqueue(i+1);            
+        }
+        System.out.println("Status: " + q.isEmpty() + " " + q.size());
+        for (int i = 0; i < seqLength; i++) {
+          System.out.println(q.dequeue());
+        }
+        System.out.println("Status: " + q.isEmpty() + " " + q.size());
+        q.enqueue(6);  
+        System.out.println("Status: " + q.isEmpty() + " " + q.size());
+        System.out.println(q.dequeue());
+        System.out.println("Status: " + q.isEmpty() + " " + q.size());
+        for (int i = 0; i < seqLength; i++) {
+          q.enqueue(i+1+15);            
+        }
+        Iterator<Integer> iter1 = q.iterator();
+        Iterator<Integer> iter2 = q.iterator(); 
+//        iter1.remove();
+        System.out.println("while");
+        while (iter1.hasNext()) {
+            System.out.println(iter1.next());
+        }
+//      iter1.next();
+        System.out.println("Status: " + q.isEmpty() + " " + q.size());
+        while (iter2.hasNext()) {
+            System.out.println(iter2.next());
+        }
+        System.out.println("Status: " + q.isEmpty() + " " + q.size());
+        System.out.println("Double foreach");      
+        for (Iterator<Integer> i = q.iterator(); i.hasNext(); ) { 
+            System.out.println("i " + i.next());
+            for (Iterator<Integer> j = q.iterator(); j.hasNext(); ) { 
+                System.out.println("j " + j.next());             
+            }
+        }
+        System.out.println("Status: " + q.isEmpty() + " " + q.size());
     }
 }

@@ -72,7 +72,6 @@ public class Deque<Item> implements Iterable<Item> {
         s.next.next.prev = s;
         s.next = s.next.next; // delete first node
         N--;
-//        if (isEmpty()) s.next = s; // to avoid loitering
 //        assert check();
         return item; // return the saved item    
     }
@@ -83,7 +82,6 @@ public class Deque<Item> implements Iterable<Item> {
         s.prev.prev.next = s;
         s.prev = s.prev.prev;
         N--;
-//        if (isEmpty()) s.prev = s; // to avoid loitering
 //        assert check();
         return item;
     }
@@ -95,7 +93,7 @@ public class Deque<Item> implements Iterable<Item> {
     private class DequeIterator implements Iterator<Item> { // iterator class
         private Node<Item> current = s.next;
         
-        public boolean hasNext()  { return current != s; } // removed: current != null &&
+        public boolean hasNext()  { return current != s; }
         public void remove()      { throw new UnsupportedOperationException(); }
 
         public Item next() {
