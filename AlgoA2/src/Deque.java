@@ -50,7 +50,7 @@ public class Deque<Item> implements Iterable<Item> {
         s.next.prev = newFirst;
         s.next = newFirst;
         N++;
-        // assert check();
+//        assert check();
     }
     
     public void addLast(Item item) { // insert the item at the end
@@ -63,17 +63,17 @@ public class Deque<Item> implements Iterable<Item> {
         s.prev.next = newLast;
         s.prev = newLast;
         N++;     
-        // assert check();
+//        assert check();
     }
     
     public Item removeFirst() { // delete and return the item at the front
         if (isEmpty()) throw new NoSuchElementException("Deque underflow");
         Item item = s.next.item; // save item to return
-        
+        s.next.next.prev = s;
         s.next = s.next.next; // delete first node
         N--;
 //        if (isEmpty()) s.next = s; // to avoid loitering
-        // assert check();
+//        assert check();
         return item; // return the saved item    
     }
     
@@ -84,9 +84,8 @@ public class Deque<Item> implements Iterable<Item> {
         s.prev = s.prev.prev;
         N--;
 //        if (isEmpty()) s.prev = s; // to avoid loitering
-        // assert check();
+//        assert check();
         return item;
-
     }
     
     public Iterator<Item> iterator() { // return an iterator over items in order from front to end
