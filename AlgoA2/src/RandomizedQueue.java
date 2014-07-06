@@ -10,7 +10,7 @@
  *
  *----------------------------------------------------------------*/
 
-public class RandomizedQueue<Item> implements Iterable<Item> {
+/*public class RandomizedQueue<Item> implements Iterable<Item> {
    public RandomizedQueue()                 // construct an empty randomized queue
    public boolean isEmpty()                 // is the queue empty?
    public int size()                        // return the number of items on the queue
@@ -19,4 +19,4 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
    public Item sample()                     // return (but do not delete) a random item
    public Iterator<Item> iterator()         // return an independent iterator over items in random order
    public static void main(String[] args)   // unit testing
-}
+}*/

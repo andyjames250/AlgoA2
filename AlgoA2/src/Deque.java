@@ -24,6 +24,7 @@ public class Deque<Item> implements Iterable<Item> {
     }
     
     public Deque() { // construct an empty deque
+        s = new Node<Item>();
         s.next = s; // the first element of the list
         s.prev = s; // the last element of the list
         s.item = null; 
@@ -70,6 +71,7 @@ public class Deque<Item> implements Iterable<Item> {
         Item item = s.next.item; // save item to return
         s.next = s.next.next; // delete first node
         N--;
+//        if (isEmpty()) s.next = s; // to avoid loitering
         // assert check();
         return item; // return the saved item    
     }
@@ -77,26 +79,23 @@ public class Deque<Item> implements Iterable<Item> {
     public Item removeLast() { // delete and return the item at the end
         if (isEmpty()) throw new NoSuchElementException("Deque underflow");
         Item item = s.prev.item;
+        s.prev.prev.next = s;
         s.prev = s.prev.prev;
         N--;
-        if (isEmpty()) s.prev = null; // to avoid loitering
+//        if (isEmpty()) s.prev = s; // to avoid loitering
         // assert check();
         return item;
 
     }
     
     public Iterator<Item> iterator() { // return an iterator over items in order from front to end
-        return new DequeIterator<Item>(s.next);
+        return new DequeIterator();
     }
     
-    private class DequeIterator<Item> implements Iterator<Item> { // iterator class
-        private Node<Item> current;
+    private class DequeIterator implements Iterator<Item> { // iterator class
+        private Node<Item> current = s.next;
         
-        public DequeIterator(Node<Item> first) {
-            current = first;
-        }
-        
-        public boolean hasNext()  { return current != null && current != s; }
+        public boolean hasNext()  { return current != s; } // removed: current != null &&
         public void remove()      { throw new UnsupportedOperationException(); }
 
         public Item next() {
@@ -131,6 +130,47 @@ public class Deque<Item> implements Iterable<Item> {
     }
     
     public static void main(String[] args) {  // unit testing
-        
+        Deque<Integer> d = new Deque<Integer>();
+        int seqLength = 5;
+        for (int i = 0; i < seqLength; i++) {
+            d.addFirst(-1*(i+1));
+//            d.addLast(i+1);            
+        }
+        System.out.println("Status: " + d.isEmpty() + " " + d.size());
+        for (int i = 0; i < seqLength; i++) {
+            System.out.println(d.removeLast());
+//            System.out.println(d.removeFirst());
+        }
+        System.out.println("Status: " + d.isEmpty() + " " + d.size());
+        d.addFirst(6);
+        System.out.println("Status: " + d.isEmpty() + " " + d.size());
+        System.out.println(d.removeLast());
+//        System.out.println(d.removeFirst());
+        System.out.println("Status: " + d.isEmpty() + " " + d.size());
+        d.addLast(7);
+        System.out.println("Status: " + d.isEmpty() + " " + d.size());
+//        System.out.println(d.removeLast());
+        System.out.println(d.removeFirst());
+        System.out.println("Status: " + d.isEmpty() + " " + d.size());
+        for (int i = 0; i < seqLength; i++) {
+            d.addFirst(i+1+15);
+        }
+        for (int i = 0; i < seqLength; i++) {
+            System.out.println(d.removeLast());
+        }
+        System.out.println("Status: " + d.isEmpty() + " " + d.size());
+//      System.out.println(d.removeLast());
+//      System.out.println(d.removeFirst());
+//        d.addFirst(null);
+      for (int i = 0; i < seqLength; i++) {
+          d.addFirst(i+1);
+//          d.addLast(i+1);            
+      }
+      Iterator<Integer> iterator = d.iterator();
+//      iterator.remove();
+      while (iterator.hasNext()) {
+          System.out.println(iterator.next());
+      }
+//      iterator.next();
     }
 }
