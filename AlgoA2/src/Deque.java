@@ -135,6 +135,7 @@ public class Deque<Item> implements Iterable<Item> {
         int seqLength = 5;
         for (int i = 0; i < seqLength; i++) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 //            d.addFirst(-1*(i+1));
             d.addFirst(i+1);            
         }
@@ -143,6 +144,8 @@ public class Deque<Item> implements Iterable<Item> {
 //            System.out.println(d.removeLast());
             System.out.println(d.removeFirst());
 =======
+=======
+>>>>>>> FETCH_HEAD
             d.addFirst(-1*(i+1));
 //            d.addLast(i+1);            
         }
@@ -150,6 +153,9 @@ public class Deque<Item> implements Iterable<Item> {
         for (int i = 0; i < seqLength; i++) {
             System.out.println(d.removeLast());
 //            System.out.println(d.removeFirst());
+<<<<<<< HEAD
+>>>>>>> FETCH_HEAD
+=======
 >>>>>>> FETCH_HEAD
         }
         System.out.println("Status: " + d.isEmpty() + " " + d.size());
@@ -177,6 +183,7 @@ public class Deque<Item> implements Iterable<Item> {
           d.addFirst(i+1);
 //          d.addLast(i+1);            
       }
+<<<<<<< HEAD
 <<<<<<< HEAD
       System.out.println("Status: " + d.isEmpty() + " " + d.size());
       Iterator<Integer> iter1 = d.iterator();
@@ -207,12 +214,17 @@ public class Deque<Item> implements Iterable<Item> {
       System.out.println("Status: " + d.isEmpty() + " " + d.size());
 
 =======
+=======
+>>>>>>> FETCH_HEAD
       Iterator<Integer> iterator = d.iterator();
 //      iterator.remove();
       while (iterator.hasNext()) {
           System.out.println(iterator.next());
       }
 //      iterator.next();
+<<<<<<< HEAD
+>>>>>>> FETCH_HEAD
+=======
 >>>>>>> FETCH_HEAD
     }
 }

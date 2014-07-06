@@ -12,6 +12,7 @@
 
 /*public class RandomizedQueue<Item> implements Iterable<Item> {
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
     public RandomizedQueue() { // construct an empty randomized queue
@@ -46,6 +47,8 @@
         
     }
 =======
+=======
+>>>>>>> FETCH_HEAD
    public RandomizedQueue()                 // construct an empty randomized queue
    public boolean isEmpty()                 // is the queue empty?
    public int size()                        // return the number of items on the queue
@@ -54,5 +57,8 @@
    public Item sample()                     // return (but do not delete) a random item
    public Iterator<Item> iterator()         // return an independent iterator over items in random order
    public static void main(String[] args)   // unit testing
+<<<<<<< HEAD
+>>>>>>> FETCH_HEAD
+=======
 >>>>>>> FETCH_HEAD
 }*/
